@@ -17,8 +17,29 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist'))
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+const books = [
+  {
+    title: 'War and Peace',
+    genre: 'Historical',
+    author: 'Lev Tolstoy',
+    read: false
+  },
+  {
+    title: 'Godo',
+    genre: 'Historical',
+    author: 'Gogolj',
+    read: false
+  }
+];
+
 bookRouter.route('/').get((req, res) => {
-  res.send('hello books');
+  res.render('books', {
+    nav: [
+      { link: '/books', title: 'Books' },
+      { link: '/authors', title: 'Authors' }
+    ],
+    title: 'library'
+  });
 });
 
 bookRouter.route('/single').get((req, res) => {
