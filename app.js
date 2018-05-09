@@ -38,8 +38,13 @@ bookRouter.route('/').get((req, res) => {
       { link: '/books', title: 'Books' },
       { link: '/authors', title: 'Authors' }
     ],
-    title: 'library'
+    title: 'library',
+    books
   });
+});
+
+bookRouter.route('/').get((req, res) => {
+  res.send('hello books');
 });
 
 bookRouter.route('/single').get((req, res) => {
